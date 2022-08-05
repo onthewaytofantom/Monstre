@@ -1,0 +1,310 @@
+<html>
+  <head>
+    <!-- get the web3.js file and look at its documentation. quite easy eh https://web3js.readthedocs.io/en/v1.2.1/getting-started.html-->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="fantommonstreabi.js"></script>
+  </head>
+  <body>
+    <h1>START LIAO</h1>
+    <div id="txStatus"></div><p></p>
+    Display Monstre<div id="Monstredisplay"></div><p></p>
+    <button id="btn-login">Login</button>
+    <button id="btn-logout">Logout</button>
+    <button id="btn-get-stats">Refresh Stats</button>
+    <button id="btn-mint">mint</button>
+    <button id="btn-buygift">Buy Gift</button><p></p>
+
+    <!--       view function      --> 
+    <button id="btn-balanceOf">balanceOf</button>
+    address: <input type="text" id="balanceOf" value=""><p></p>
+    <button id="btn-baseTokenURI">baseTokenURI</button>
+    xxxx: <input type="text" id="baseTokenURI" value=""><p></p>
+    <button id="btn-BattlingMonstre">BattlingMonstre</button>
+    xxxx: <input type="text" id="BattlingMonstre" value=""><p></p>
+    <button id="btn-getApproved">getApproved</button>
+    xxxx: <input type="text" id="getApproved" value=""><p></p>
+    <button id="btn-getMonstresByOwner">getMonstresByOwner</button>
+    xxxx: <input type="text" id="getMonstresByOwner" value=""><p></p>
+    <button id="btn-getPlayerName">getPlayerName</button>
+    xxxx: <input type="text" id="getPlayerName" value=""><p></p>
+    <button id="btn-imageExtension">imageExtension</button>
+    xxxx: <input type="text" id="imageExtension" value=""><p></p>
+    <button id="btn-imageURL">imageURL</button>
+    xxxx: <input type="text" id="imageURL" value=""><p></p>
+    <button id="btn-isApprovedForAll">isApprovedForAll</button>
+    xxxx: <input type="text" id="isApprovedForAll" value=""><p></p>
+    <button id="btn-Monstre">Monstre</button>
+    xxxx: <input type="text" id="Monstre" value=""><p></p>
+    <button id="btn-name">name</button>
+    xxxx: <input type="text" id="name" value=""><p></p>
+    <button id="btn-owner">owner</button>
+    xxxx: <input type="text" id="owner" value=""><p></p>
+    <button id="btn-ownerOf">ownerOf</button>
+    xxxx: <input type="text" id="ownerOf" value=""><p></p>
+    <button id="btn-royaltyInfo">royaltyInfo</button>
+    xxxx: <input type="text" id="royaltyInfo" value=""><p></p>
+    <button id="btn-symbol">symbol</button>
+    xxxx: <input type="text" id="symbol" value=""><p></p>
+    <button id="btn-tokenByIndex">tokenByIndex</button>
+    xxxx: <input type="text" id="tokenByIndex" value=""><p></p>
+    <button id="btn-tokenJSON">tokenJSON</button>
+    xxxx: <input type="text" id="tokenJSON" value=""><p></p>
+    <button id="btn-tokenOfOwnerByIndex">tokenOfOwnerByIndex</button>
+    xxxx: <input type="text" id="tokenOfOwnerByIndex" value=""><p></p>
+    <button id="btn-tokenURI">tokenURI</button>
+    xxxx: <input type="text" id="tokenURI" value=""><p></p>
+    <button id="btn-totalSupply">totalSupply</button>
+    xxxx: <input type="text" id="totalSupply" value=""><p></p>
+    <button id="btn-Trainer">Trainer</button>
+    xxxx: <input type="text" id="Trainer" value=""><p></p>
+    <button id="btn-ViewNFT">ViewNFT</button>
+    xxxx: <input type="text" id="ViewNFT" value=""><p></p>
+    
+
+
+    <script> //javascript here!
+    // Instantiate myContract
+    var ftmonabi;
+    var userAccount;
+    console.log(ftmonabi);
+       const getWeb3 = async () => {
+        return new Promise(async (resolve, reject) => {
+          //have an instance of web3.js.
+          const web3 = new Web3(Web3.givenProvider) //web3() is from web3.js
+           //i have included at header, the abi file. exported from SContract compiler.
+          var mycontractaddress = '0x6997F23C7Cef36dC6f729e45b234644bDB30274D';
+          FTMON = new web3.eth.Contract(ftmonabi, mycontractaddress);
+          //userAccount = web3.eth.accounts[0]; // declare an account
+          userAccount = await web3.eth.getAccounts();
+          console.log(userAccount[0]);
+          //try to catch a block
+          try{
+            //direct talk to metamask window.ethereum is metamask function
+            await window.ethereum.request({method: "eth_requestAccounts"})
+            resolve(web3) //if all is well, resolve all the promise with web3.js instance
+          } catch (error) {
+            reject(error) //otherwise reject it with error.
+          }
+        })
+      }
+      
+      getWeb3();
+// all contract function --- VIEW --- No need TX -----
+      function balanceOf(address_owner) {
+        return FTMON.methods.balanceOf(address_owner).call()
+      }
+      function baseTokenURI() {
+        return FTMON.methods.baseTokenURI().call();
+      }
+      function BattlingMonstre(uint256_39) {
+        return FTMON.methods.BattlingMonstre(uint256_39).call();
+      }
+      function getApproved(uint256_tokenid) {
+        return FTMON.methods.getApproved(uint256_tokenid).call();
+      }
+      function getMonstresByOwner(address_owner) {
+        return FTMON.methods.getMonstresByOwner(address_owner).call();
+      }
+      function getPlayerName(uint256_) {
+        return FTMON.methods.getPlayerName(uint256_).call();
+      }
+      function imageExtension() {
+        return FTMON.methods.imageExtension().call();
+      }
+      function imageURL() {
+        return FTMON.methods.imageURL().call();
+      }
+      function isApprovedForAll(address_owner,address_operator) {
+        return FTMON.methods.isApprovedForAll(address_owner,address_operator).call();
+      }
+      function Monstre(uint256_tokenid) {
+        return FTMON.methods.Monstre(uint256_tokenid).call();
+      }
+      function name() {
+        return FTMON.methods.name().call();
+      }
+      function owner() {
+        return FTMON.methods.owner().call();
+      }
+      function ownerOf(uint256_tokenid) {
+        return FTMON.methods.ownerOf(uint256_tokenid).call();
+      }
+      function royaltyInfo(uint256_salesprice) {
+        return FTMON.methods.royaltyInfo(0,uint256_salesprice).call();
+      }
+      function symbol() {
+        return FTMON.methods.symbol().call();
+      }
+      function tokenByIndex(uint256_index) {
+        return FTMON.methods.tokenByIndex(uint256_index).call();
+      }
+      function tokenJSON(uint256_tokenId) {
+        return FTMON.methods.tokenJSON(uint256_tokenId).call();
+      }
+      function tokenOfOwnerByIndex(address_owner , uint256_index) {
+        return FTMON.methods.tokenOfOwnerByIndex(address_owner , uint256_index).call();
+      }
+      function tokenURI(uint256_tokenId) {
+        return FTMON.methods.tokenURI(uint256_tokenId).call();
+      }
+      function totalSupply() {
+        return FTMON.methods.totalSupply().call();
+      }
+      function Trainer(uint256_tokenId) {
+        return FTMON.methods.Trainer(uint256_tokenId).call();
+      }
+      function ViewNFT(uint256_tokenId) {
+        return FTMON.methods.ViewNFT(uint256_tokenId).call();
+      }
+
+      //display, ids is an object array.
+      function displayLAOBOYSHOU(ids) {
+        $("#Monstredisplay").empty();
+          for (idd of ids) {
+          
+            getLaoboyshouDetails(idd).then(function(laoboysh) {
+            
+            
+              $("#laoboyshou").append(`<div class="laoboyshou">
+                <ul>
+                  <li>Name: ${laoboysh.name}</li>
+                  <li>DNA: ${laoboysh.dna}</li>
+                  <li>Generation: ${laoboysh.generation}</li>
+                  <li>DyingTime: ${laoboysh.dyingtime}</li>
+                  <li>Happyness: ${laoboysh.happyness}</li>
+                  <li>Discipline: ${laoboysh.discipline}</li>
+                  <li>combatpower: ${laoboysh.combatpower}</li>
+                  <li>cuteness: ${laoboysh.cuteness}</li>
+                  <li>EXP: ${laoboysh.exp}</li>
+                  <li>winCount: ${laoboysh.winCount}</li>
+                  <li>lossCount: ${laoboysh.lossCount}</li>
+                </ul>
+              </div>`);
+            });
+        }
+      }
+
+      function mint(name, dna) {
+        $("#txStatus").text("minting a new laoboy");
+        return FTMON.methods.mint(name, dna)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {
+          $("#txStatus").text("successfully minted!");
+        })
+        .on("error", function(error) {
+          $("#txStatus").text(error);
+        });
+      }
+
+      function buyGift(id) {
+        $("#txStatus").text("Buying gift");
+        return FTMON.methods.buyGiftforthem(id)
+        .send({ from: userAccount[0], value: 1000000000000000 })
+        .on("receipt", function(receipt) {
+          $("#txStatus").text("You fantomon is happy!");
+        })
+        .on("error", function(error) {
+          $("#txStatus").text(error);
+        });
+      }
+
+      
+
+      document.getElementById('btn-login').addEventListener("click", function(event) {
+        getWeb3();
+      }, {once: false});
+
+      document.getElementById('btn-mint').addEventListener("click", function(event) {
+        mint("PUTyounamehere", 12345);
+      }, {once: false});
+
+      document.getElementById('btn-buygift').addEventListener("click", function(event) {
+        buyGift(1);
+      }, {once: false});
+
+      //I use .then, to resolve the promise, and return from the promise directly feed into the then(function)
+      document.getElementById('btn-get-stats').addEventListener("click", function(event) {
+        getyourNFTinfoByOwner(userAccount[0]).then(displayLAOBOYSHOU);
+      }, {once: false});
+
+      
+      //----view function java
+     
+      document.getElementById('btn-balanceOf').addEventListener("click", function(event) {
+        console.log( balanceOf());
+      }, {once: false});
+      document.getElementById('btn-baseTokenURI').addEventListener("click", function(event) {
+        console.log( baseTokenURI());
+      }, {once: false});
+      document.getElementById('btn-BattlingMonstre').addEventListener("click", function(event) {
+        console.log( BattlingMonstre());
+      }, {once: false});
+      document.getElementById('btn-getApproved').addEventListener("click", function(event) {
+        console.log( getApproved());
+      }, {once: false});
+      document.getElementById('btn-getMonstresByOwner').addEventListener("click", function(event) {
+        console.log( getMonstresByOwner());
+      }, {once: false});
+      document.getElementById('btn-getPlayerName').addEventListener("click", function(event) {
+        console.log( getPlayerName());
+      }, {once: false});
+      document.getElementById('btn-imageExtension').addEventListener("click", function(event) {
+        console.log( imageExtension());
+      }, {once: false});
+      document.getElementById('btn-imageURL').addEventListener("click", function(event) {
+        console.log( imageURL());
+      }, {once: false});
+      document.getElementById('btn-isApprovedForAll').addEventListener("click", function(event) {
+        console.log( isApprovedForAll());
+      }, {once: false});
+      document.getElementById('btn-Monstre').addEventListener("click", function(event) {
+        console.log( Monstre());
+      }, {once: false});
+      document.getElementById('btn-name').addEventListener("click", function(event) {
+        console.log( name());
+      }, {once: false});
+      document.getElementById('btn-owner').addEventListener("click", function(event) {
+        console.log( owner());
+      }, {once: false});
+      document.getElementById('btn-ownerOf').addEventListener("click", function(event) {
+        console.log( ownerOf());
+      }, {once: false});
+      document.getElementById('btn-royaltyInfo').addEventListener("click", function(event) {
+        console.log( royaltyInfo());
+      }, {once: false});
+      document.getElementById('btn-symbol').addEventListener("click", function(event) {
+        console.log( symbol());
+      }, {once: false});
+      document.getElementById('btn-tokenByIndex').addEventListener("click", function(event) {
+        console.log( tokenByIndex());
+      }, {once: false});
+      document.getElementById('btn-tokenJSON').addEventListener("click", function(event) {
+        console.log( tokenJSON());
+      }, {once: false});
+      document.getElementById('btn-tokenOfOwnerByIndex').addEventListener("click", function(event) {
+        console.log( tokenOfOwnerByIndex());
+      }, {once: false});
+      document.getElementById('btn-tokenURI').addEventListener("click", function(event) {
+        console.log( tokenURI());
+      }, {once: false});
+      document.getElementById('btn-totalSupply').addEventListener("click", function(event) {
+        console.log( totalSupply());
+      }, {once: false});
+      document.getElementById('btn-Trainer').addEventListener("click", function(event) {
+        console.log( Trainer());
+      }, {once: false});
+      document.getElementById('btn-ViewNFT').addEventListener("click", function(event) {
+        console.log( ViewNFT());
+      }, {once: false});
+      
+      
+      
+
+
+
+
+
+    </script>
+  </body>
+</html>
