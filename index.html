@@ -17,49 +17,49 @@
 
     <!--       view function      --> 
     <button id="btn-balanceOf">balanceOf</button>
-    address: <input type="text" id="balanceOf" value=""><p></p>
+    address: <input type="text" id="balanceOf" value="0"><p></p>
     <button id="btn-baseTokenURI">baseTokenURI</button>
-    xxxx: <input type="text" id="baseTokenURI" value=""><p></p>
+    <p></p>
     <button id="btn-BattlingMonstre">BattlingMonstre</button>
-    xxxx: <input type="text" id="BattlingMonstre" value=""><p></p>
+    id: <input type="text" id="BattlingMonstre" value="0"><p></p>
     <button id="btn-getApproved">getApproved</button>
-    xxxx: <input type="text" id="getApproved" value=""><p></p>
+    tokenId: <input type="text" id="getApproved" value="0"><p></p>
     <button id="btn-getMonstresByOwner">getMonstresByOwner</button>
-    xxxx: <input type="text" id="getMonstresByOwner" value=""><p></p>
+    address: <input type="text" id="getMonstresByOwner" value="0"><p></p>
     <button id="btn-getPlayerName">getPlayerName</button>
-    xxxx: <input type="text" id="getPlayerName" value=""><p></p>
+    address: <input type="text" id="getPlayerName" value="0"><p></p>
     <button id="btn-imageExtension">imageExtension</button>
-    xxxx: <input type="text" id="imageExtension" value=""><p></p>
+    <p></p>
     <button id="btn-imageURL">imageURL</button>
-    xxxx: <input type="text" id="imageURL" value=""><p></p>
+    <p></p>
     <button id="btn-isApprovedForAll">isApprovedForAll</button>
-    xxxx: <input type="text" id="isApprovedForAll" value=""><p></p>
+    address: <input type="text" id="isApprovedForAll1" value="0">,address:<input type="text" id="isApprovedForAll2" value="0"><p></p>
     <button id="btn-Monstre">Monstre</button>
-    xxxx: <input type="text" id="Monstre" value=""><p></p>
+    id: <input type="text" id="Monstre" value="0"><p></p>
     <button id="btn-name">name</button>
-    xxxx: <input type="text" id="name" value=""><p></p>
+    <p></p>
     <button id="btn-owner">owner</button>
-    xxxx: <input type="text" id="owner" value=""><p></p>
+    <p></p>
     <button id="btn-ownerOf">ownerOf</button>
-    xxxx: <input type="text" id="ownerOf" value=""><p></p>
+    tokenId: <input type="text" id="ownerOf" value="0"><p></p>
     <button id="btn-royaltyInfo">royaltyInfo</button>
-    xxxx: <input type="text" id="royaltyInfo" value=""><p></p>
+    $$$wei: <input type="text" id="royaltyInfo" value="0"><p></p>
     <button id="btn-symbol">symbol</button>
-    xxxx: <input type="text" id="symbol" value=""><p></p>
+    <p></p>
     <button id="btn-tokenByIndex">tokenByIndex</button>
-    xxxx: <input type="text" id="tokenByIndex" value=""><p></p>
+    index: <input type="text" id="tokenByIndex" value="0"><p></p>
     <button id="btn-tokenJSON">tokenJSON</button>
-    xxxx: <input type="text" id="tokenJSON" value=""><p></p>
+    tokenID: <input type="text" id="tokenJSON" value="0"><p></p>
     <button id="btn-tokenOfOwnerByIndex">tokenOfOwnerByIndex</button>
-    xxxx: <input type="text" id="tokenOfOwnerByIndex" value=""><p></p>
+    address<input type="text" id="tokenOfOwnerByIndex" value="0">,index:<input type="text" id="tokenOfOwnerByIndex" value="0"><p></p>
     <button id="btn-tokenURI">tokenURI</button>
-    xxxx: <input type="text" id="tokenURI" value=""><p></p>
+    tokenID: <input type="text" id="tokenURI" value="0"><p></p>
     <button id="btn-totalSupply">totalSupply</button>
-    xxxx: <input type="text" id="totalSupply" value=""><p></p>
+    <p></p>
     <button id="btn-Trainer">Trainer</button>
-    xxxx: <input type="text" id="Trainer" value=""><p></p>
+    tokenID: <input type="text" id="Trainer" value="0"><p></p>
     <button id="btn-ViewNFT">ViewNFT</button>
-    xxxx: <input type="text" id="ViewNFT" value=""><p></p>
+    tokenId: <input type="text" id="ViewNFT" value="0"><p></p>
     
 
 
@@ -232,70 +232,70 @@
       //----view function java
      
       document.getElementById('btn-balanceOf').addEventListener("click", function(event) {
-        console.log( balanceOf());
+        console.log( balanceOf(document.getElementById("balanceOf").value));
       }, {once: false});
       document.getElementById('btn-baseTokenURI').addEventListener("click", function(event) {
-        console.log( baseTokenURI());
+        console.log( baseTokenURI(document.getElementById("baseTokenURI").value));
       }, {once: false});
       document.getElementById('btn-BattlingMonstre').addEventListener("click", function(event) {
-        console.log( BattlingMonstre());
+        console.log( BattlingMonstre(document.getElementById("BattlingMonstre").value));
       }, {once: false});
       document.getElementById('btn-getApproved').addEventListener("click", function(event) {
-        console.log( getApproved());
+        console.log( getApproved(document.getElementById("getApproved").value));
       }, {once: false});
       document.getElementById('btn-getMonstresByOwner').addEventListener("click", function(event) {
-        console.log( getMonstresByOwner());
+        console.log( getMonstresByOwner(document.getElementById("getMonstresByOwner").value));
       }, {once: false});
       document.getElementById('btn-getPlayerName').addEventListener("click", function(event) {
-        console.log( getPlayerName());
+        console.log( getPlayerName(document.getElementById("getPlayerName").value));
       }, {once: false});
       document.getElementById('btn-imageExtension').addEventListener("click", function(event) {
-        console.log( imageExtension());
+        console.log( imageExtension(document.getElementById("imageExtension").value));
       }, {once: false});
       document.getElementById('btn-imageURL').addEventListener("click", function(event) {
-        console.log( imageURL());
+        console.log( imageURL(document.getElementById("imageURL").value));
       }, {once: false});
       document.getElementById('btn-isApprovedForAll').addEventListener("click", function(event) {
-        console.log( isApprovedForAll());
+        console.log( isApprovedForAll(document.getElementById("isApprovedForAll").value));
       }, {once: false});
       document.getElementById('btn-Monstre').addEventListener("click", function(event) {
-        console.log( Monstre());
+        console.log( Monstre(document.getElementById("Monstre").value));
       }, {once: false});
       document.getElementById('btn-name').addEventListener("click", function(event) {
-        console.log( name());
+        console.log( name(document.getElementById("name").value));
       }, {once: false});
       document.getElementById('btn-owner').addEventListener("click", function(event) {
-        console.log( owner());
+        console.log( owner(document.getElementById("owner").value));
       }, {once: false});
       document.getElementById('btn-ownerOf').addEventListener("click", function(event) {
-        console.log( ownerOf());
+        console.log( ownerOf(document.getElementById("ownerOf").value));
       }, {once: false});
       document.getElementById('btn-royaltyInfo').addEventListener("click", function(event) {
-        console.log( royaltyInfo());
+        console.log( royaltyInfo(document.getElementById("royaltyInfo").value));
       }, {once: false});
       document.getElementById('btn-symbol').addEventListener("click", function(event) {
-        console.log( symbol());
+        console.log( symbol(document.getElementById("symbol").value));
       }, {once: false});
       document.getElementById('btn-tokenByIndex').addEventListener("click", function(event) {
-        console.log( tokenByIndex());
+        console.log( tokenByIndex(document.getElementById("tokenByIndex").value));
       }, {once: false});
       document.getElementById('btn-tokenJSON').addEventListener("click", function(event) {
-        console.log( tokenJSON());
+        console.log( tokenJSON(document.getElementById("tokenJSON").value));
       }, {once: false});
       document.getElementById('btn-tokenOfOwnerByIndex').addEventListener("click", function(event) {
-        console.log( tokenOfOwnerByIndex());
+        console.log( tokenOfOwnerByIndex(document.getElementById("tokenOfOwnerByIndex").value));
       }, {once: false});
       document.getElementById('btn-tokenURI').addEventListener("click", function(event) {
-        console.log( tokenURI());
+        console.log( tokenURI(document.getElementById("tokenURI").value));
       }, {once: false});
       document.getElementById('btn-totalSupply').addEventListener("click", function(event) {
-        console.log( totalSupply());
+        console.log( totalSupply(document.getElementById("totalSupply").value));
       }, {once: false});
       document.getElementById('btn-Trainer').addEventListener("click", function(event) {
-        console.log( Trainer());
+        console.log( Trainer(document.getElementById("Trainer").value));
       }, {once: false});
       document.getElementById('btn-ViewNFT').addEventListener("click", function(event) {
-        console.log( ViewNFT());
+        console.log( ViewNFT(document.getElementById("ViewNFT").value));
       }, {once: false});
       
       
