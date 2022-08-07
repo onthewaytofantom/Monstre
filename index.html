@@ -60,8 +60,63 @@
     tokenID: <input type="text" id="Trainer" value="0"><p></p>
     <button id="btn-ViewNFT">ViewNFT</button>
     tokenId: <input type="text" id="ViewNFT" value="0"><p></p>
-    
-
+    <!-- transactopm functopm -->
+    <p>address_to: <input type="text" id="approveaddress_to" value="0">
+      uint256_tokenId: <input type="text" id="approveuint256_tokenId" value="0">
+      <button id="btntx-approve">approve</button></p>
+      <p>uint256_tokenId: <input type="text" id="BattleMonstreuint256_tokenId" value="0">
+      uint8_rank: <input type="text" id="BattleMonstreuint8_rank" value="0">
+      <button id="btntx-BattleMonstre">BattleMonstre</button></p>
+      <p>uint256_tokenId: <input type="text" id="BattleSimulationuint256_tokenId" value="0">
+      uint8_wrong: <input type="text" id="BattleSimulationuint8_wrong" value="0">
+      <button id="btntx-BattleSimulation">BattleSimulation</button></p>
+      <p>uint256_tokenId: <input type="text" id="burnuint256_tokenId" value="0">
+      <button id="btntx-burn">burn</button></p>
+      <p>uint256_tokenId: <input type="text" id="defrozeMonstreuint256_tokenId" value="0">
+      <button id="btntx-defrozeMonstre">defrozeMonstre</button></p>
+      <p>address_trainer: <input type="text" id="deligateToTraineraddress_trainer" value="0">
+      uint256_tokenId: <input type="text" id="deligateToTraineruint256_tokenId" value="0">
+      <button id="btntx-deligateToTrainer">deligateToTrainer</button></p>
+      <p>uint256_tokenId: <input type="text" id="feedsMonstreuint256_tokenId" value="0">
+      uint8_foodtype: <input type="text" id="feedsMonstreuint8_foodtype" value="0">
+      <button id="btntx-feedsMonstre">feedsMonstre</button></p>
+      <p>uint256_tokenId: <input type="text" id="frozeMonstreuint256_tokenId" value="0">
+      <button id="btntx-frozeMonstre">frozeMonstre</button></p>
+      <p>uint256_tokenId: <input type="text" id="HatchEgguint256_tokenId" value="0">
+      <button id="btntx-HatchEgg">HatchEgg</button></p>
+      <p><button id="btntx-renounceOwnershipXX">renounceOwnershipXX</button></p>
+      <p>uint256_tokenId: <input type="text" id="RevokeTraineruint256_tokenId" value="0">
+      <button id="btntx-RevokeTrainer">RevokeTrainer</button></p>
+      <p>address_from: <input type="text" id="safeTransferFromaddress_from" value="0">
+      address_to: <input type="text" id="safeTransferFromaddress_to" value="0">
+      uint256_tokenId: <input type="text" id="safeTransferFromuint256_tokenId" value="0">
+      <button id="btntx-safeTransferFrom">safeTransferFrom</button></p>
+      <p>address_operator: <input type="text" id="setApprovalForAlladdress_operator" value="0">
+      bool_approved: <input type="text" id="setApprovalForAllbool_approved" value="0">
+      <button id="btntx-setApprovalForAll">setApprovalForAll</button></p>
+      <p>string_URI: <input type="text" id="setBaseURIstring_URI" value="0">
+      <button id="btntx-setBaseURI">setBaseURI</button></p>
+      <p>string_extension: <input type="text" id="setImageExtensionstring_extension" value="0">
+      <button id="btntx-setImageExtension">setImageExtension</button></p>
+      <p>string_URL: <input type="text" id="setImageURLstring_URL" value="0">
+      <button id="btntx-setImageURL">setImageURL</button></p>
+      <p>uint256_tokenId: <input type="text" id="trainsMonstreuint256_tokenId" value="0">
+      uint8_trainingtype: <input type="text" id="trainsMonstreuint8_trainingtype" value="0">
+      <button id="btntx-trainsMonstre">trainsMonstre</button></p>
+      <p>address_from: <input type="text" id="transferFromaddress_from" value="0">
+      address_to: <input type="text" id="transferFromaddress_to" value="0">
+      uint256_tokenId: <input type="text" id="transferFromuint256_tokenId" value="0">
+      <button id="btntx-transferFrom">transferFrom</button></p>
+      <p>address_newOwner: <input type="text" id="transferOwnershipaddress_newOwner" value="0">
+      <button id="btntx-transferOwnership">transferOwnership</button></p>
+      <p>address_to: <input type="text" id="withdrawaddress_to" value="0">
+      <button id="btntx-withdraw">withdraw</button></p>
+      <p>//</p><p>//</p> 
+      <!----------------------payable----------------->
+      <p>mint_address_to: <input type="text" id="mint_address_to" value="0x??">
+        mint_number: <input type="number" id="mint_number" value="1">
+        pay: <input type="number" id="mint_payable" value="?">
+        <button id="btnpayable-mint">Mint</button></p>
 
     <script> //javascript here!
     // Instantiate myContract
@@ -157,6 +212,159 @@
       function ViewNFT(uint256_tokenId) {
         return FTMON.methods.ViewNFT(uint256_tokenId).call();
       }
+//--------all contract TX function (not payable) ------------------------
+function approve(address_to,uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.approve(address_to,uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function BattleMonstre(uint256_tokenId,uint8_rank) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.BattleMonstre(uint256_tokenId,uint8_rank)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function BattleSimulation(uint256_tokenId,uint8_wrong) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.BattleSimulation(uint256_tokenId,uint8_wrong)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function burn(uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.burn(uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function defrozeMonstre(uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.defrozeMonstre(uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function deligateToTrainer(address_trainer,uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.deligateToTrainer(address_trainer,uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function feedsMonstre(uint256_tokenId,uint8_foodtype) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.feedsMonstre(uint256_tokenId,uint8_foodtype)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function frozeMonstre(uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.frozeMonstre(uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function HatchEgg(uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.HatchEgg(uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function renounceOwnershipXX( ) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.renounceOwnershipXX( )
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function RevokeTrainer(uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.RevokeTrainer(uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function safeTransferFrom(address_from,address_to,uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.safeTransferFrom(address_from,address_to,uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function setApprovalForAll(address_operator,bool_approved) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.setApprovalForAll(address_operator,bool_approved)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function setBaseURI(string_URI) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.setBaseURI(string_URI)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function setImageExtension(string_extension) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.setImageExtension(string_extension)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function setImageURL(string_URL) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.setImageURL(string_URL)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function trainsMonstre(uint256_tokenId,uint8_trainingtype) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.trainsMonstre(uint256_tokenId,uint8_trainingtype)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function transferFrom(address_from,address_to,uint256_tokenId) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.transferFrom(address_from,address_to,uint256_tokenId)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function transferOwnership(address_newOwner) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.transferOwnership(address_newOwner)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+function withdraw(address_to) {
+        $("#txStatus").text("approve");
+        return FTMON.methods.withdraw(address_to)
+        .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {$("#txStatus").text("successfully TX");})
+        .on("error", function(error) {$("#txStatus").text(error);});
+      }
+
+
+
+
+
+
+
+
+
+
+
+
 
       //display, ids is an object array.
       function displayLAOBOYSHOU(ids) {
@@ -185,10 +393,22 @@
         }
       }
 
-      function mint(name, dna) {
+      function mintbackp(name, dna) {
         $("#txStatus").text("minting a new laoboy");
         return FTMON.methods.mint(name, dna)
         .send({ from: userAccount[0] })
+        .on("receipt", function(receipt) {
+          $("#txStatus").text("successfully minted!");
+        })
+        .on("error", function(error) {
+          $("#txStatus").text(error);
+        });
+      }
+// PAYABLE!!!!!!!!!!!!!!!!!
+      function mint(address, uint256_numberofmint) {
+        $("#txStatus").text("minting a new laoboy");
+        return FTMON.methods.mint(userAccount[0], uint256_numberofmint)
+        .send({ from: userAccount[0], value: 1000000000000000000  }) //document.getElementById("mint_payable")
         .on("receipt", function(receipt) {
           $("#txStatus").text("successfully minted!");
         })
@@ -265,7 +485,7 @@
         console.log( name(document.getElementById("name").value));
       }, {once: false});
       document.getElementById('btn-owner').addEventListener("click", function(event) {
-        console.log( owner(document.getElementById("owner").value));
+        console.log( owner());
       }, {once: false});
       document.getElementById('btn-ownerOf').addEventListener("click", function(event) {
         console.log( ownerOf(document.getElementById("ownerOf").value));
@@ -297,8 +517,78 @@
       document.getElementById('btn-ViewNFT').addEventListener("click", function(event) {
         console.log( ViewNFT(document.getElementById("ViewNFT").value));
       }, {once: false});
+      //---transaction activate--
+
       
-      
+      document.getElementById('btntx-approve').addEventListener("click", function(event) {
+        console.log( approve(document.getElementById("approveaddress_to").value,document.getElementById("approveuint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-BattleMonstre').addEventListener("click", function(event) {
+        console.log( BattleMonstre(document.getElementById("BattleMonstreuint256_tokenId").value,document.getElementById("BattleMonstreuint8_rank").value,));
+      }, {once: false});
+document.getElementById('btntx-BattleSimulation').addEventListener("click", function(event) {
+        console.log( BattleSimulation(document.getElementById("BattleSimulationuint256_tokenId").value,document.getElementById("BattleSimulationuint8_wrong").value,));
+      }, {once: false});
+document.getElementById('btntx-burn').addEventListener("click", function(event) {
+        console.log( burn(document.getElementById("burnuint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-defrozeMonstre').addEventListener("click", function(event) {
+        console.log( defrozeMonstre(document.getElementById("defrozeMonstreuint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-deligateToTrainer').addEventListener("click", function(event) {
+        console.log( deligateToTrainer(document.getElementById("deligateToTraineraddress_trainer").value,document.getElementById("deligateToTraineruint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-feedsMonstre').addEventListener("click", function(event) {
+        console.log( feedsMonstre(document.getElementById("feedsMonstreuint256_tokenId").value,document.getElementById("feedsMonstreuint8_foodtype").value,));
+      }, {once: false});
+document.getElementById('btntx-frozeMonstre').addEventListener("click", function(event) {
+        console.log( frozeMonstre(document.getElementById("frozeMonstreuint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-HatchEgg').addEventListener("click", function(event) {
+        console.log( HatchEgg(document.getElementById("HatchEgguint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-renounceOwnershipXX').addEventListener("click", function(event) {
+        console.log( renounceOwnershipXX());
+      }, {once: false});
+document.getElementById('btntx-RevokeTrainer').addEventListener("click", function(event) {
+        console.log( RevokeTrainer(document.getElementById("RevokeTraineruint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-safeTransferFrom').addEventListener("click", function(event) {
+        console.log( safeTransferFrom(document.getElementById("safeTransferFromaddress_from").value,document.getElementById("safeTransferFromaddress_to").value,document.getElementById("safeTransferFromuint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-setApprovalForAll').addEventListener("click", function(event) {
+        console.log( setApprovalForAll(document.getElementById("setApprovalForAlladdress_operator").value,document.getElementById("setApprovalForAllbool_approved").value,));
+      }, {once: false});
+document.getElementById('btntx-setBaseURI').addEventListener("click", function(event) {
+        console.log( setBaseURI(document.getElementById("setBaseURIstring_URI").value,));
+      }, {once: false});
+document.getElementById('btntx-setImageExtension').addEventListener("click", function(event) {
+        console.log( setImageExtension(document.getElementById("setImageExtensionstring_extension").value,));
+      }, {once: false});
+document.getElementById('btntx-setImageURL').addEventListener("click", function(event) {
+        console.log( setImageURL(document.getElementById("setImageURLstring_URL").value,));
+      }, {once: false});
+document.getElementById('btntx-trainsMonstre').addEventListener("click", function(event) {
+        console.log( trainsMonstre(document.getElementById("trainsMonstreuint256_tokenId").value,document.getElementById("trainsMonstreuint8_trainingtype").value,));
+      }, {once: false});
+document.getElementById('btntx-transferFrom').addEventListener("click", function(event) {
+        console.log( transferFrom(document.getElementById("transferFromaddress_from").value,document.getElementById("transferFromaddress_to").value,document.getElementById("transferFromuint256_tokenId").value,));
+      }, {once: false});
+document.getElementById('btntx-transferOwnership').addEventListener("click", function(event) {
+        console.log( transferOwnership(document.getElementById("transferOwnershipaddress_newOwner").value,));
+      }, {once: false});
+document.getElementById('btntx-withdraw').addEventListener("click", function(event) {
+        console.log( withdraw(document.getElementById("withdrawaddress_to").value,));
+      }, {once: false});
+
+// PAYABLE---------------
+document.getElementById('btnpayable-mint').addEventListener("click", function(event) {
+        console.log( mint(document.getElementById("mint_address_to").value,document.getElementById("mint_number").value,));
+      }, {once: false});
+
+
+
+
       
 
 
