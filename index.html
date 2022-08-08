@@ -4,18 +4,32 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="fantommonstreabi.js"></script>
+    <style>
+      .vDiv {
+        border: 5px outset red;
+        background-color: rgb(200, 173, 230);
+        text-align: center;
+      } 
+      .button2 {background-color: #008CBA;} /* Blue */
+      .button3 {background-color: #f44336;} /* Red */ 
+      .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+      .button5 {background-color: #555555;} /* Black */</style>
   </head>
   <body>
     <h1>START LIAO</h1>
-    <div id="txStatus"></div><p></p>
+    <div id="txStatus" ></div><p></p>
     Display Monstre<div id="Monstredisplay"></div><p></p>
     <button id="btn-login">Login</button>
     <button id="btn-logout">Logout</button>
-    <button id="btn-get-stats">Refresh Stats</button>
+    <button id="btn-get-stats">Refresh my MONSTRE display</button>
     <button id="btn-mint">mint</button>
     <button id="btn-buygift">Buy Gift</button><p></p>
 
+    <button onclick="hideDiV()">hide View functions</button>
+    <div id="viewDIV" class="vDiv">
+     
     <!--       view function      --> 
+   
     <button id="btn-balanceOf">balanceOf</button>
     address: <input type="text" id="balanceOf" value="0"><p></p>
     <button id="btn-baseTokenURI">baseTokenURI</button>
@@ -60,16 +74,16 @@
     tokenID: <input type="text" id="Trainer" value="0"><p></p>
     <button id="btn-ViewNFT">ViewNFT</button>
     tokenId: <input type="text" id="ViewNFT" value="0"><p></p>
-    <!-- transactopm functopm -->
+    <!-- transactopm functopm --></div>
     <p>address_to: <input type="text" id="approveaddress_to" value="0">
       uint256_tokenId: <input type="text" id="approveuint256_tokenId" value="0">
       <button id="btntx-approve">approve</button></p>
       <p>uint256_tokenId: <input type="text" id="BattleMonstreuint256_tokenId" value="0">
       uint8_rank: <input type="text" id="BattleMonstreuint8_rank" value="0">
-      <button id="btntx-BattleMonstre">BattleMonstre</button></p>
+      <button id="btntx-BattleMonstre"class="button3">BattleMonstre</button></p>
       <p>uint256_tokenId: <input type="text" id="BattleSimulationuint256_tokenId" value="0">
       uint8_wrong: <input type="text" id="BattleSimulationuint8_wrong" value="0">
-      <button id="btntx-BattleSimulation">BattleSimulation</button></p>
+      <button id="btntx-BattleSimulation"class="button3">BattleSimulation</button></p>
       <p>uint256_tokenId: <input type="text" id="burnuint256_tokenId" value="0">
       <button id="btntx-burn">burn</button></p>
       <p>uint256_tokenId: <input type="text" id="defrozeMonstreuint256_tokenId" value="0">
@@ -79,11 +93,11 @@
       <button id="btntx-deligateToTrainer">deligateToTrainer</button></p>
       <p>uint256_tokenId: <input type="text" id="feedsMonstreuint256_tokenId" value="0">
       uint8_foodtype: <input type="text" id="feedsMonstreuint8_foodtype" value="0">
-      <button id="btntx-feedsMonstre">feedsMonstre</button></p>
+      <button id="btntx-feedsMonstre"class="button3">feedsMonstre</button></p>
       <p>uint256_tokenId: <input type="text" id="frozeMonstreuint256_tokenId" value="0">
-      <button id="btntx-frozeMonstre">frozeMonstre</button></p>
+      <button id="btntx-frozeMonstre" >frozeMonstre</button></p>
       <p>uint256_tokenId: <input type="text" id="HatchEgguint256_tokenId" value="0">
-      <button id="btntx-HatchEgg">HatchEgg</button></p>
+      <button id="btntx-HatchEgg"class="button3">HatchEgg</button></p>
       <p><button id="btntx-renounceOwnershipXX">renounceOwnershipXX</button></p>
       <p>uint256_tokenId: <input type="text" id="RevokeTraineruint256_tokenId" value="0">
       <button id="btntx-RevokeTrainer">RevokeTrainer</button></p>
@@ -102,7 +116,7 @@
       <button id="btntx-setImageURL">setImageURL</button></p>
       <p>uint256_tokenId: <input type="text" id="trainsMonstreuint256_tokenId" value="0">
       uint8_trainingtype: <input type="text" id="trainsMonstreuint8_trainingtype" value="0">
-      <button id="btntx-trainsMonstre">trainsMonstre</button></p>
+      <button id="btntx-trainsMonstre"class="button3">trainsMonstre</button></p>
       <p>address_from: <input type="text" id="transferFromaddress_from" value="0">
       address_to: <input type="text" id="transferFromaddress_to" value="0">
       uint256_tokenId: <input type="text" id="transferFromuint256_tokenId" value="0">
@@ -116,7 +130,7 @@
       <p>mint_address_to: <input type="text" id="mint_address_to" value="0x??">
         mint_number: <input type="number" id="mint_number" value="1">
         pay: <input type="number" id="mint_payable" value="?">
-        <button id="btnpayable-mint">Mint</button></p>
+        <button id="btnpayable-mint"class="button3">Mint</button></p>
 
     <script> //javascript here!
     // Instantiate myContract
@@ -145,6 +159,18 @@
       }
       
       getWeb3();
+
+      //---misc functions ---
+      function hideDiV() {
+  var x = document.getElementById("viewDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
 // all contract function --- VIEW --- No need TX -----
       function balanceOf(address_owner) {
         return FTMON.methods.balanceOf(address_owner).call()
@@ -371,22 +397,21 @@ function withdraw(address_to) {
         $("#Monstredisplay").empty();
           for (idd of ids) {
           
-            getLaoboyshouDetails(idd).then(function(laoboysh) {
+            ViewNFT(idd).then(function(Monstre) {
+            console.log("here d");
             
-            
-              $("#laoboyshou").append(`<div class="laoboyshou">
+              $("#Monstredisplay").append(`<div class="Monstredisplay">
                 <ul>
-                  <li>Name: ${laoboysh.name}</li>
-                  <li>DNA: ${laoboysh.dna}</li>
-                  <li>Generation: ${laoboysh.generation}</li>
-                  <li>DyingTime: ${laoboysh.dyingtime}</li>
-                  <li>Happyness: ${laoboysh.happyness}</li>
-                  <li>Discipline: ${laoboysh.discipline}</li>
-                  <li>combatpower: ${laoboysh.combatpower}</li>
-                  <li>cuteness: ${laoboysh.cuteness}</li>
-                  <li>EXP: ${laoboysh.exp}</li>
-                  <li>winCount: ${laoboysh.winCount}</li>
-                  <li>lossCount: ${laoboysh.lossCount}</li>
+                  <li>Species: ${Monstre.species}   Gene: ${Monstre.gene}</li>
+                  <li>Exp: ${Monstre.exp}    Status: ${Monstre.status}</li>
+                  <li>Discipline: ${Monstre.attribute.discipline}   Happiness: ${Monstre.attribute.happiness}</li>
+                  <li>Stage: ${Monstre.attribute.stage}   Weight (g): ${Monstre.attribute.weight}</li>
+                  <li>Strength: ${Monstre.power.strength}   Agility: ${Monstre.power.agility}    Intellegence: ${Monstre.power.intellegence}</li>
+                  <li>Hitpoints: ${Monstre.power.hitpoints}   Skills: ${Monstre.skill}  Traits: ${Monstre.trait}</li>
+                  <li>Deadtime: ${Monstre.time.deadtime}   Endurance: ${Monstre.time.endurance}</li>
+                  <li>Evolutiontime: ${Monstre.time.evolution}   Stamina: ${Monstre.time.stamina}</li>
+                  <li>Variant: ${Monstre.variant}</li>
+                  <li>Frozentime: ${Monstre.time.frozentime}</li>
                 </ul>
               </div>`);
             });
@@ -445,7 +470,8 @@ function withdraw(address_to) {
 
       //I use .then, to resolve the promise, and return from the promise directly feed into the then(function)
       document.getElementById('btn-get-stats').addEventListener("click", function(event) {
-        getyourNFTinfoByOwner(userAccount[0]).then(displayLAOBOYSHOU);
+        getMonstresByOwner(userAccount[0]).then(displayLAOBOYSHOU);
+        console.log("111");
       }, {once: false});
 
       
@@ -464,7 +490,7 @@ function withdraw(address_to) {
         console.log( getApproved(document.getElementById("getApproved").value));
       }, {once: false});
       document.getElementById('btn-getMonstresByOwner').addEventListener("click", function(event) {
-        console.log( getMonstresByOwner(document.getElementById("getMonstresByOwner").value));
+        console.log( getMonstresByOwner(userAccount[0])); //document.getElementById("getMonstresByOwner").value
       }, {once: false});
       document.getElementById('btn-getPlayerName').addEventListener("click", function(event) {
         console.log( getPlayerName(document.getElementById("getPlayerName").value));
