@@ -402,14 +402,14 @@ function withdraw(address_to) {
             
               $("#Monstredisplay").append(`<div class="Monstredisplay">
                 <ul>
-                  <li>Species: ${Monstre.species}   Gene: ${Monstre.gene}</li>
+                  <li>Species: ${Monstre.species}  id:  ${Monstre.attribute.id} Gene: ${Monstre.gene}</li>
                   <li>Exp: ${Monstre.exp}    Status: ${Monstre.status}</li>
                   <li>Discipline: ${Monstre.attribute.discipline}   Happiness: ${Monstre.attribute.happiness}</li>
                   <li>Stage: ${Monstre.attribute.stage}   Weight (g): ${Monstre.attribute.weight}</li>
                   <li>Strength: ${Monstre.power.strength}   Agility: ${Monstre.power.agility}    Intellegence: ${Monstre.power.intellegence}</li>
                   <li>Hitpoints: ${Monstre.power.hitpoints}   Skills: ${Monstre.skill}  Traits: ${Monstre.trait}</li>
-                  <li>Deadtime: ${Monstre.time.deadtime}   Endurance: ${Monstre.time.endurance}</li>
-                  <li>Evolutiontime: ${Monstre.time.evolution}   Stamina: ${Monstre.time.stamina}</li>
+                  <li>Deadtime: ${(Monstre.time.deadtime - new Date().valueOf()/1000)/3600}hrs   Endurance: ${(Monstre.time.endurance - new Date().valueOf()/1000)/3600}hrs</li>
+                  <li>Evolutiontime: ${Monstre.time.evolution}   Stamina: ${(new Date().valueOf()/1000 -Monstre.time.stamina)/3600}hrs</li>
                   <li>Variant: ${Monstre.variant}</li>
                   <li>Frozentime: ${Monstre.time.frozentime}</li>
                 </ul>
